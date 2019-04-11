@@ -17,9 +17,6 @@ export const readTweets = () => ({
 export const firebaseLogin = () => ({
     type: FIREBASELOGIN
 })
-// export const loginStatus = () => ({
-//     type: LOGINSTATUS
-// })
 export const loginStatus = aiueo => async dispatch => {
     dispatch({ type: LOGINSTATUS, aiueo })
 }
@@ -34,19 +31,14 @@ export const submitTweet = values => async dispatch => {
 export const getTweets = () => ({
     type: GET_TWEETS
 })
-
-// -------------------------------------------------------------------------------------
-
 export const GET_POSTS_REQUEST = 'GET_POSTS_REQUEST'
 export const getPostsRequest = () => {
   return {
     type: GET_POSTS_REQUEST
   }
 }
-
 export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS'
 export const getPostsSuccess = (json) => {  
-    debugger;
   return {
     type: GET_POSTS_SUCCESS,
     posts: json,
@@ -54,21 +46,8 @@ export const getPostsSuccess = (json) => {
   }
 }
 
-// export const getPosts = () => {
-//   return (dispatch) => {
-//       debugger;
-//       dispatch(getPostsRequest())
-//       const temperature = []
-//       firestore.collection("tweets").get().then(function(querySnapshot) {
-//           querySnapshot.forEach(function(doc) {
-//               temperature.push(doc.data())
-//           });
-//       });
-//       return dispatch(getPostsSuccess(temperature))
-//   }
-// }
-const temperature = []
 export const getPosts = () => async dispatch => {
+    const temperature = []
     await firestore.collection("projects").get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             temperature.push(doc.data())
@@ -76,9 +55,3 @@ export const getPosts = () => async dispatch => {
     });
     dispatch(getPostsSuccess(temperature))
 }
-
-
-// export const deleteEvent = id => async dispatch => {
-//     await await axios.delete(`${ROOT_URL}/events/${id}${QUERYSTRING}`)
-//     dispatch({ type: DELETE_EVENT, id }) 
-// }
