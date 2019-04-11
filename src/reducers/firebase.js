@@ -1,5 +1,5 @@
 import { 
-    FIREBASELOGIN,LOGINSTATUS,FIREBASELOGOUT,SUBMITTWEET,GETTWEETS
+    FIREBASELOGIN,LOGINSTATUS,FIREBASELOGOUT,SUBMITTWEET,GET_TWEETS
  } from '../actions'
  import {
     GET_POSTS_REQUEST, GET_POSTS_SUCCESS
@@ -45,7 +45,7 @@ export default ( state = [initialState] , action ) => {
               }).then(() => {
               });
             return state 
-        case GETTWEETS:
+        case GET_TWEETS:
             const temperature = []
             firestore.collection("tweets").get().then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {

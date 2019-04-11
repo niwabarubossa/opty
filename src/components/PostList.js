@@ -1,26 +1,17 @@
 import React, { Component } from 'react';
 import Post from './Post'
 
-
-// const PostList = ({ state_posts }) => (
-//   <ul>
-//     {
-//         state_posts.map((state_post, index) => 
-//         <Post key={index} {...state_post}/>
-//       )
-//     }
-//   </ul>
-// )
-
 class PostList extends Component{
   render() {
+    console.log('i am post list in state_posts')
+    console.log(this.props.state_posts);
     return(
       <div>
       
-      {this.props.state_posts.map((state_post) => 
-        <Post key={state_post.title} {...state_post} />
+      { this.props.state_posts && this.props.state_posts.map((state_post) => 
+        <Post key={state_post.content} {...state_post} />
       )}
-
+aaa
       </div>
     )
     

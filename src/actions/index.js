@@ -7,7 +7,7 @@ export const FIREBASELOGIN = 'FIREBASELOGIN'
 export const LOGINSTATUS = 'LOGINSTATUS'
 export const FIREBASELOGOUT = 'FIREBASELOGOUT'
 export const SUBMITTWEET = 'SUBMITTEXT'
-export const GETTWEETS = 'GETTWEETS'
+export const GET_TWEETS = 'GET_TWEETS'
 
 const aiueo = 'action/index.js　におけるconst'
 
@@ -32,20 +32,21 @@ export const submitTweet = values => async dispatch => {
     dispatch({ type: SUBMITTWEET, new_values })
 }
 export const getTweets = () => ({
-    type: GETTWEETS
+    type: GET_TWEETS
 })
 
 // -------------------------------------------------------------------------------------
 
 export const GET_POSTS_REQUEST = 'GET_POSTS_REQUEST'
-const getPostsRequest = () => {
+export const getPostsRequest = () => {
   return {
     type: GET_POSTS_REQUEST
   }
 }
 
 export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS'
-const getPostsSuccess = (json) => {  
+export const getPostsSuccess = (json) => {  
+    debugger;
   return {
     type: GET_POSTS_SUCCESS,
     posts: json,
@@ -53,22 +54,31 @@ const getPostsSuccess = (json) => {
   }
 }
 
-export const getPosts = () => {
-  return (dispatch) => {
-      dispatch(getPostsRequest())
-      const temperature = []
-      firestore.collection("tweets").get().then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-              temperature.push(doc.data())
-          });
-      });
-      return dispatch(getPostsSuccess(temperature))
-  }
+// export const getPosts = () => {
+//   return (dispatch) => {
+//       debugger;
+//       dispatch(getPostsRequest())
+//       const temperature = []
+//       firestore.collection("tweets").get().then(function(querySnapshot) {
+//           querySnapshot.forEach(function(doc) {
+//               temperature.push(doc.data())
+//           });
+//       });
+//       return dispatch(getPostsSuccess(temperature))
+//   }
+// }
+const temperature = []
+export const getPosts = () => async dispatch => {
+    await firestore.collection("projects").get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            temperature.push(doc.data())
+        });
+    });
+    dispatch(getPostsSuccess(temperature))
 }
 
-// export const putEvent = values => async dispatch => {
-//     const response = await axios.put(`${ROOT_URL}/events/${values.id}${QUERYSTRING}`, values)
-//     dispatch({ type: UPDATE_EVENT, response })
-// }
 
-// var hairetu = [{title: 'aiueo',body: 'aiueo'},{title: 'kaki',body: 'bady'}]
+// export const deleteEvent = id => async dispatch => {
+//     await await axios.delete(`${ROOT_URL}/events/${id}${QUERYSTRING}`)
+//     dispatch({ type: DELETE_EVENT, id }) 
+// }
