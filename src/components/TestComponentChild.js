@@ -1,22 +1,19 @@
-import {connect} from 'react-redux'
-// import PostList from '../PostList'
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import React from 'react';
 //子供
-const GetPostListContainer = ({props}) => {
+const TestComponentChild = ({props}) => {
   return (
     <div>
-      { props.state_posts.map(project => {
+      { props.state_posts && props.state_posts.map(project => {
         return (
-          <Link to={`/${project.tweet_id}`}>
             <div>
+              <h1>test component child </h1>
               <h1 style={{color: 'black'}}>{project.content}</h1>
             </div>
-          </Link>
         )
       })}  
     </div>
   )
 }
 
-export default GetPostListContainer
+export default TestComponentChild

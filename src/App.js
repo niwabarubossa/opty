@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 
 class App extends Component {
   componentDidMount(){
-    this.props.getPosts(970)
+    this.props.getPosts()
 }
   render() {
     console.log('this.props in App.j')
