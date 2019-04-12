@@ -8,20 +8,14 @@ import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import TestComponent from './components/TestComponent';
+import AppBarDrawer from './components/appbar/AppBarDrawer'
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -77,35 +71,35 @@ class App extends Component {
   render() {
     const { classes, theme } = this.props;
     
-    const drawer = (
-      <div>
-        <div className={classes.toolbar} />
-        <Divider />
-        <List>
-              <Link to={'/'} style={{textDecoration : 'none',color: 'white' }} >
-                  <ListItem button key={'aaa'}>
-                  <ListItemIcon> <InboxIcon /> </ListItemIcon>
-                  <ListItemText primary={'トップページ'} />
-                  </ListItem>
-              </Link>
-              <Link to={'/management'} style={{textDecoration : 'none',color: 'white' }} >
-                  <ListItem button key={'aaa'}>
-                  <ListItemIcon> <InboxIcon /> </ListItemIcon>
-                  <ListItemText primary={'管理画面へ'} />
-                  </ListItem>
-              </Link>
-        </List>
-        <Divider />
-        <List>
-          {['目標１', '目標２', '目標３'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </div>
-    );
+    // const drawer = (
+    //   <div>
+    //     <div className={classes.toolbar} />
+    //     <Divider />
+    //     <List>
+    //           <Link to={'/'} style={{textDecoration : 'none',color: 'white' }} >
+    //               <ListItem button key={'aaa'}>
+    //               <ListItemIcon> <InboxIcon /> </ListItemIcon>
+    //               <ListItemText primary={'トップページ'} />
+    //               </ListItem>
+    //           </Link>
+    //           <Link to={'/management'} style={{textDecoration : 'none',color: 'white' }} >
+    //               <ListItem button key={'aaa'}>
+    //               <ListItemIcon> <InboxIcon /> </ListItemIcon>
+    //               <ListItemText primary={'管理画面へ'} />
+    //               </ListItem>
+    //           </Link>
+    //     </List>
+    //     <Divider />
+    //     <List>
+    //       {['目標１', '目標２', '目標３'].map((text, index) => (
+    //         <ListItem button key={text}>
+    //           <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+    //           <ListItemText primary={text} />
+    //         </ListItem>
+    //       ))}
+    //     </List>
+    //   </div>
+    // );
     return (
       <BrowserRouter>
       <Switch>
@@ -141,7 +135,8 @@ class App extends Component {
                                 paper: classes.drawerPaper,
                             }}
                             >
-                            {drawer}
+                            {/* {drawer} */}
+                            <AppBarDrawer />
                             </Drawer>
                         </Hidden>
                         <Hidden xsDown implementation="css">
@@ -152,7 +147,8 @@ class App extends Component {
                             variant="permanent"
                             open
                             >
-                            {drawer}
+                            {/* {drawer} */}
+                            <AppBarDrawer />
                             </Drawer>
                         </Hidden>
                     </nav>
