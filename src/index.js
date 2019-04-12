@@ -15,20 +15,26 @@ import { applyMiddleware } from 'redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import { getPosts } from './actions'
-
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import TestComponent from './components/TestComponent'
 const enhancer = process.env.NODE_ENV === 'development' ?
 composeWithDevTools(applyMiddleware(thunk)) : applyMiddleware(thunk)
 const store = createStore(reducer, enhancer)
 
 
-store.dispatch(getPosts())
+// store.dispatch(getPosts())
 
 // const store = createStore(reducer)
 
 ReactDOM.render(
     <MuiThemeProvider>
         <Provider store={store}>
-            <App />
+            <BrowserRouter>
+                <Switch>
+                    <Route path="/:id" component={TestComponent} />
+                    <Route exact path="/" component={App} />
+                </Switch>
+            </BrowserRouter> 
         </Provider>
     </MuiThemeProvider>,
  document.getElementById('root'));

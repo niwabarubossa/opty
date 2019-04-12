@@ -18,18 +18,3 @@ const GetPostListContainer = ({props}) => {
 }
 
 export default GetPostListContainer
-
-// const mapStateToProps = (state) => {    
-//   // const count = state.posts.count
-//   const length = Object.keys(state.firebase).length
-//   const currentState = state.firebase[length-1].items
-//   console.log('---------current state----------')
-//   console.log(currentState);
-//   return { state_posts: currentState }
-// }
-
-// const GetPostListContainer = connect(
-//   mapStateToProps
-// )(PostList)
-
-// export default GetPostListContainer;

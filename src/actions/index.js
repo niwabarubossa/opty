@@ -48,11 +48,7 @@ export const getPostsSuccess = (json) => {
 
 export const getPosts = (number) => async dispatch => {
     const temperature = []
-    console.log("----------number---------")
-    console.log(number)
-    console.log("----------number---------")
-    const aiueo = 970
-    await firestore.collection("projects").where("tweet_id","==",aiueo).get().then(function(querySnapshot) {
+    await firestore.collection("projects").where("tweet_id","==",number).get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             temperature.push(doc.data())
         });

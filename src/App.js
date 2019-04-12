@@ -12,14 +12,14 @@ import { connect } from 'react-redux'
 
 class App extends Component {
   componentDidMount(){
-    this.props.getPosts()
+    this.props.getPosts(970)
 }
   render() {
     console.log('this.props in App.j')
     console.log(this.props);
     return (
       <div className="App">
-        {/* <Header />
+        {/* <Header />s
         <MainContainer /> */}
         <GetPostListContainer props={this.props} />
       </div>
