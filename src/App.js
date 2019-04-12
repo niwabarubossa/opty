@@ -17,8 +17,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Header />s
-        <MainContainer /> */}
+        <Header />s
+        <MainContainer />
         <GetPostListContainer props={this.props} />
       </div>
     );
