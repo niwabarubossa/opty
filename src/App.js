@@ -19,7 +19,7 @@ class App extends Component {
     console.log(this.props);
     return (
       <div className="App">
-        {/* <Header />
+        {/* <Header />s
         <MainContainer /> */}
         <GetPostListContainer props={this.props} />
       </div>

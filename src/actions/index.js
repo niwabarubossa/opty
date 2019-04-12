@@ -55,3 +55,23 @@ export const getPosts = () => async dispatch => {
     });
     dispatch(getPostsSuccess(temperature))
 }
+
+// export const getSelectedPosts = (number) => async dispatch => {
+//     const temperature = []
+//     await firestore.collection("projects").where("tweet_id","==",number).get().then(function(querySnapshot) {
+//         querySnapshot.forEach(function(doc) {
+//             temperature.push(doc.data())
+//         });
+//     });
+//     dispatch(getPostsSuccess(temperature))
+// }
+
+export const getSelectedPosts = (tweet_id) => async dispatch => {
+    const temperature = []
+    await firestore.collection("projects").where("tweet_id","==",tweet_id).get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            temperature.push(doc.data())
+        });
+    });
+    dispatch(getPostsSuccess(temperature))
+}
