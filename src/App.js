@@ -15,8 +15,6 @@ class App extends Component {
     this.props.getPosts()
 }
   render() {
-    console.log('this.props in App.j')
-    console.log(this.props);
     return (
       <div className="App">
         {/* <Header />s
