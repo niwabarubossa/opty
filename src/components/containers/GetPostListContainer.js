@@ -6,7 +6,7 @@ import React from 'react';
 const GetPostListContainer = ({props}) => {
   return (
     <div>
-      { props.state_posts && props.state_posts.map(project => {
+      { props.state_posts.map(project => {
         return (
           <div>
             <h1 style={{color: 'black'}}>{project.content}</h1>
