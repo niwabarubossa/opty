@@ -7,7 +7,7 @@ const TestComponentChild = ({props}) => {
       { props.state_posts && props.state_posts.map(project => {
         return (
             <div>
-              <h1>test component child </h1>
+              <h1 style={{color: 'black'}}>test component child </h1>
               <h1 style={{color: 'black'}}>{project.content}</h1>
             </div>
         )
