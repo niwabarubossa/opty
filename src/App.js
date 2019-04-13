@@ -15,7 +15,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import TestComponent from './components/TestComponent';
-import AppBarDrawer from './components/appbar/AppBarDrawer'
+// import AppBarDrawer from './components/appbar/AppBarDrawer'
+import AppBarMain from './components/appbar/AppBarMain'
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -52,22 +53,28 @@ const styles = theme => ({
 
 class App extends Component {
   constructor() {
-      super();
-      this.state = {
-        showPopup: false
-      };
-  }
-  state = {
-      mobileOpen: false,
-  };
-  handleDrawerToggle = () => {
-      this.setState(state => ({ mobileOpen: !state.mobileOpen }));
-  };
-  togglePopup() {
-    this.setState({
-      showPopup: !this.state.showPopup
-    });
-  }
+    super();
+    this.state = {
+      showPopup: false
+    };
+}
+  // constructor() {
+  //     super();
+  //     this.state = {
+  //       showPopup: false
+  //     };
+  // }
+  // state = {
+  //     mobileOpen: false,
+  // };
+  // handleDrawerToggle = () => {
+  //     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+  // };
+  // togglePopup() {
+  //   this.setState({
+  //     showPopup: !this.state.showPopup
+  //   });
+  // }
   render() {
     const { classes, theme } = this.props;
     return (
@@ -75,7 +82,7 @@ class App extends Component {
       <Switch>
           <div className="App">
             <div className={classes.root}>
-              <CssBaseline />
+              {/* <CssBaseline />
                 <AppBar position="fixed" className={classes.appBar}>
                   <Toolbar>
                     <IconButton
@@ -92,8 +99,8 @@ class App extends Component {
                         <button onClick={this.togglePopup.bind(this)}>記録する</button>
                     </Typography>
                   </Toolbar>
-                </AppBar>
-                <nav className={classes.drawer}>
+                </AppBar> */}
+                {/* <nav className={classes.drawer}>
                         <Hidden smUp implementation="css">
                             <Drawer
                             container={this.props.container}
@@ -104,9 +111,9 @@ class App extends Component {
                             classes={{
                                 paper: classes.drawerPaper,
                             }}
-                            >
+                            > */}
                             {/* {drawer} */}
-                            <AppBarDrawer />
+                            {/* <AppBarDrawer />
                             </Drawer>
                         </Hidden>
                         <Hidden xsDown implementation="css">
@@ -116,12 +123,14 @@ class App extends Component {
                             }}
                             variant="permanent"
                             open
-                            >
+                            > */}
                             {/* {drawer} */}
-                            <AppBarDrawer />
+                            {/* <AppBarDrawer />
                             </Drawer>
                         </Hidden>
-                    </nav>
+                    </nav> */}
+              <AppBarMain />
+                
 
               <main className={classes.content} style={{paddingTop: '64px'}}>
               <BrowserRouter>
