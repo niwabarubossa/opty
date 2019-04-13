@@ -23,7 +23,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-            <div className="App">
+            {/* <div className="App"> */}
+            <div className={classes.App}>
               <div className={classes.root}>
                 <AppBarMain />
                   
