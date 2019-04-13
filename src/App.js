@@ -70,36 +70,6 @@ class App extends Component {
   }
   render() {
     const { classes, theme } = this.props;
-    
-    // const drawer = (
-    //   <div>
-    //     <div className={classes.toolbar} />
-    //     <Divider />
-    //     <List>
-    //           <Link to={'/'} style={{textDecoration : 'none',color: 'white' }} >
-    //               <ListItem button key={'aaa'}>
-    //               <ListItemIcon> <InboxIcon /> </ListItemIcon>
-    //               <ListItemText primary={'トップページ'} />
-    //               </ListItem>
-    //           </Link>
-    //           <Link to={'/management'} style={{textDecoration : 'none',color: 'white' }} >
-    //               <ListItem button key={'aaa'}>
-    //               <ListItemIcon> <InboxIcon /> </ListItemIcon>
-    //               <ListItemText primary={'管理画面へ'} />
-    //               </ListItem>
-    //           </Link>
-    //     </List>
-    //     <Divider />
-    //     <List>
-    //       {['目標１', '目標２', '目標３'].map((text, index) => (
-    //         <ListItem button key={text}>
-    //           <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-    //           <ListItemText primary={text} />
-    //         </ListItem>
-    //       ))}
-    //     </List>
-    //   </div>
-    // );
     return (
       <BrowserRouter>
       <Switch>
