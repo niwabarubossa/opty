@@ -3,31 +3,28 @@ import { firestore } from '../plugins/firebase'
 import 'firebase/firestore';
 
 export const READTWEETS = 'READTWEETS'
-export const FIREBASELOGIN = 'FIREBASELOGIN'
-export const LOGINSTATUS = 'LOGINSTATUS'
-export const FIREBASELOGOUT = 'FIREBASELOGOUT'
-export const SUBMITTWEET = 'SUBMITTEXT'
-export const GET_TWEETS = 'GET_TWEETS'
-
-const aiueo = 'action/index.js　におけるconst'
-
 export const readTweets = () => ({
     type: READTWEETS
 })
+export const FIREBASELOGIN = 'FIREBASELOGIN'
 export const firebaseLogin = () => ({
     type: FIREBASELOGIN
 })
+export const LOGINSTATUS = 'LOGINSTATUS'
 export const loginStatus = aiueo => async dispatch => {
     dispatch({ type: LOGINSTATUS, aiueo })
 }
+export const FIREBASELOGOUT = 'FIREBASELOGOUT'
 export const firebaseLogout = () => ({
     type: FIREBASELOGOUT
 })
+export const SUBMITTWEET = 'SUBMITTEXT'
 export const submitTweet = values => async dispatch => {
     // const values = values
     const new_values = values
     dispatch({ type: SUBMITTWEET, new_values })
 }
+export const GET_TWEETS = 'GET_TWEETS'
 export const getTweets = () => ({
     type: GET_TWEETS
 })
@@ -45,7 +42,6 @@ export const getPostsSuccess = (json) => {
     receivedAt: Date.now()
   }
 }
-
 export const getPosts = () => async dispatch => {
     const temperature = []
     await firestore.collection("projects").get().then(function(querySnapshot) {
@@ -55,17 +51,6 @@ export const getPosts = () => async dispatch => {
     });
     dispatch(getPostsSuccess(temperature))
 }
-
-// export const getSelectedPosts = (number) => async dispatch => {
-//     const temperature = []
-//     await firestore.collection("projects").where("tweet_id","==",number).get().then(function(querySnapshot) {
-//         querySnapshot.forEach(function(doc) {
-//             temperature.push(doc.data())
-//         });
-//     });
-//     dispatch(getPostsSuccess(temperature))
-// }
-
 export const getSelectedPosts = (tweet_id) => async dispatch => {
     const temperature = []
     await firestore.collection("projects").where("tweet_id","==",tweet_id).get().then(function(querySnapshot) {
