@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import MainContainer from './components/MainContainer'
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
@@ -9,21 +9,17 @@ import TestComponent from './components/TestComponent';
 import AppBarMain from './components/appbar/AppBarMain'
 
 const drawerWidth = 240;
-const styles = theme => ({
-  root: {
-    display: 'flex',
-  },
-  content: {
-    flexGrow: 1,
-    // padding: theme.spacing.unit * 3,
-    padding: '5px',
-  },
-});
+
+const content_style = {
+  flexGrow: 1,
+  padding: '5px',
+  paddingTop: '64px'
+}
 
 class App extends Component {
 
   render() {
-    const { classes, theme } = this.props;
+    // const { classes, theme } = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -31,7 +27,7 @@ class App extends Component {
               <div className={classes.root}>
                 <AppBarMain />
                   
-                <main className={classes.content} style={{paddingTop: '64px'}}>
+                <main className={classes.content} style={content_style} >
                 <BrowserRouter>
                   <Switch>
                     <Route exact path="/" component={MainContainer} />
@@ -51,4 +47,5 @@ App.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
-export default withStyles(styles, { withTheme: true })(App);
+// export default withStyles(styles, { withTheme: true })(App);
+export default App;
