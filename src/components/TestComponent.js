@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import TestComponentChild from './TestComponentChild'
-
 import { getPostsRequest, getPostsSuccess, getPosts ,getSelectedPosts } from '../actions'
 import { connect } from 'react-redux'
+import classes from '../assets/TestComponent.css'
 class TestComponent extends Component {
     
     componentWillMount(){
@@ -13,7 +13,7 @@ class TestComponent extends Component {
 
     render(){
         return(
-            <div>
+            <div className={classes.testComponent}>
                 <TestComponentChild props={this.props} />
             </div>
         )
