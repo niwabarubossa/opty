@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AppBarDrawer from './AppBarDrawer'
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
-
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
@@ -70,8 +69,7 @@ class AppBarMain extends Component {
 
         return(
             <React.Fragment>
-
-            <CssBaseline />
+                <CssBaseline />
                 <AppBar position="fixed" className={classes.appBar}>
                   <Toolbar>
                     <IconButton
@@ -101,7 +99,6 @@ class AppBarMain extends Component {
                             paper: classes.drawerPaper,
                         }}
                         >
-                        {/* {drawer} */}
                         <AppBarDrawer />
                         </Drawer>
                     </Hidden>
@@ -113,7 +110,6 @@ class AppBarMain extends Component {
                         variant="permanent"
                         open
                         >
-                        {/* {drawer} */}
                         <AppBarDrawer />
                         </Drawer>
                     </Hidden>
@@ -122,7 +118,6 @@ class AppBarMain extends Component {
         )
     }
 }
-
 
 AppBarMain.propTypes = {
     classes: PropTypes.object.isRequired,
