@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { handleDrawerToggle } from '../../actions'
 import AppBarDrawer from './AppBarDrawer'
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
@@ -52,9 +55,9 @@ class AppBarMain extends Component {
           showPopup: false
         };
     }
-    state = {
-        mobileOpen: false,
-    };
+    // state = {
+    //     mobileOpen: false,
+    // };
     handleDrawerToggle = () => {
         this.setState(state => ({ mobileOpen: !state.mobileOpen }));
     };
@@ -66,7 +69,6 @@ class AppBarMain extends Component {
 
     render(){
         const { classes, theme } = this.props;
-
         return(
             <React.Fragment>
                 <CssBaseline />
@@ -75,7 +77,8 @@ class AppBarMain extends Component {
                     <IconButton
                       color="inherit"
                       aria-label="Open drawer"
-                      onClick={this.handleDrawerToggle}
+                      // onClick={this.handleDrawerToggle}
+                      onClick={this.props.handleDrawerToggle}
                       className={classes.menuButton}
                     >
                       <MenuIcon />
@@ -96,4 +99,18 @@ AppBarMain.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
 };
-export default withStyles(styles, { withTheme: true })(AppBarMain);
+// export default withStyles(styles, { withTheme: true })(AppBarMain);
+
+const mapDispatchToProps = ({ handleDrawerToggle })
+const mapStateToProps = (state) => {    
+  // const length = Object.keys(state.firebase).length
+  // const current_mobile_open = state.firebase[length-1].mobileOpen
+  return { redux_mobileOpen: state.firebase.mobileOpen }
+}
+
+export default compose(
+  withStyles(styles,{ withTheme: true }),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+))(AppBarMain)

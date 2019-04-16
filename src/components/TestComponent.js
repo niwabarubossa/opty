@@ -23,7 +23,8 @@ class TestComponent extends Component {
 const mapDispatchToProps = ({ getPostsRequest, getPostsSuccess, getPosts,getSelectedPosts })
 const mapStateToProps = (state) => {    
   const length = Object.keys(state.firebase).length
-  const currentState = state.firebase[length-1].items
+//   const currentState = state.firebase[length-1].items
+const currentState = state.firebase.items
   return { state_posts: currentState }
 }
 
