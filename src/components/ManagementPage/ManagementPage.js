@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { handleDrawerToggleReset } from '../../actions'
 
 class ManagementPage extends Component {
+    componentWillMount(){
+        this.props.handleDrawerToggleReset()
+    }
     render(){
         return(
             <div style={{color: 'black'}}>
@@ -13,4 +18,7 @@ class ManagementPage extends Component {
     }
 }
 
-export default ManagementPage;
+
+const mapDispatchToProps = ({ handleDrawerToggleReset })
+export default connect(null, mapDispatchToProps)(ManagementPage)
+

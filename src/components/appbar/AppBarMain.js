@@ -68,10 +68,7 @@ class AppBarMain extends Component {
     }
 
     render(){
-      console.log('this.props.redux_mobileOpen')
-      console.log(this.props.redux_mobileOpen)
         const { classes, theme } = this.props;
-
         return(
             <React.Fragment>
                 <CssBaseline />
