@@ -1,8 +1,6 @@
-import {connect} from 'react-redux'
-// import PostList from '../PostList'
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import React from 'react';
-//子供
+
 const GetPostListContainer = ({props}) => {
   return (
     <div>
