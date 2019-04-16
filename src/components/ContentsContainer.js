@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
-import { firestore } from '../plugins/firebase'
 import 'firebase/firestore';
 import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import { connect } from 'react-redux'
-import { firebaseLogin, loginStatus, firebaseLogout, submitTweet } from '../actions'
+import { submitTweet } from '../actions'
 
 class ContentsContainer extends Component {
     constructor(props){
