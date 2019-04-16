@@ -4,7 +4,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import TestComponent from './components/TestComponent';
-import AppBarMain from './components/appbar/AppBarMain'
+import AppBarMain from './components/AppBar/AppBarMain'
+import ManagementPage from "./components/ManagementPage/ManagementPage";
 
 const styles = theme => ({
   root: {
@@ -12,33 +13,41 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    // padding: theme.spacing.unit * 3,
-    paddingTop: '64px'
+    padding: theme.spacing.unit * 3,
+    // paddingTop: '64px'
   },
 });
 
 class App extends Component {
 
   render() {
+    console.log('---------theme--------------')
+    console.log(this.props)
     const { classes, theme } = this.props;
+    console.log('---------theme--------------')
+    console.log(this.props)
     return (
       <BrowserRouter>
-        <Switch>
             <div className="App" style={{textAlign: 'center'}}>
               <div className={classes.root}>
-                <AppBarMain />
+                {/* <AppBarMain /> */}
                   
-                <main className={classes.content} >
+                {/* <main className={classes.content} > */}
                 <BrowserRouter>
-                  <Switch>
-                    <Route exact path="/" component={MainContainer} />
-                    <Route path="/:id" component={TestComponent} />
-                  </Switch>
+                    <main className={classes.content} style={{textAlign: 'center'}}>
+                      <AppBarMain />
+                      <div className={classes.content} style={{textAlign: 'center'}}>
+                        <div style={{flexGrow: 1}}>
+                          <Route exact path="/" component={MainContainer} />
+                          <Route path="/:id" component={TestComponent} />
+                          <Route path="/management" component={ManagementPage} />
+                        </div>  
+                      </div>
+                    </main>
                 </BrowserRouter> 
-                </main>
+                {/* </main> */}
               </div>
             </div>
-        </Switch>
       </BrowserRouter> 
     );
   }
