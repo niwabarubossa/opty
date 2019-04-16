@@ -18,7 +18,5 @@ class ManagementPage extends Component {
     }
 }
 
-
 const mapDispatchToProps = ({ handleDrawerToggleReset })
 export default connect(null, mapDispatchToProps)(ManagementPage)
-
