@@ -60,3 +60,7 @@ export const getSelectedPosts = (tweet_id) => async dispatch => {
     });
     dispatch(getPostsSuccess(temperature))
 }
+export const HANDLE_DRAWER_TOGGLE = 'HANDLE_DRAWER_TOGGLE'
+export const handleDrawerToggle = () => ({
+    type: HANDLE_DRAWER_TOGGLE
+})

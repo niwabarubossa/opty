@@ -3,6 +3,9 @@ import AppBarDrawer from './AppBarDrawer'
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import { withStyles } from '@material-ui/core/styles';
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { handleDrawerToggle } from '../../actions'
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -45,12 +48,12 @@ class InNav extends Component {
           showPopup: false
         };
     }
-    state = {
-        mobileOpen: false,
-    };
-    handleDrawerToggle = () => {
-        this.setState(state => ({ mobileOpen: !state.mobileOpen }));
-    };
+    // state = {
+    //     mobileOpen: false,
+    // };
+    // handleDrawerToggle = () => {
+    //     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+    // };
     togglePopup() {
       this.setState({
         showPopup: !this.state.showPopup
@@ -67,8 +70,9 @@ class InNav extends Component {
                     container={this.props.container}
                     variant="temporary"
                     anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                    open={this.state.mobileOpen}
-                    onClose={this.handleDrawerToggle}
+                    // open={this.state.mobileOpen}
+                    open={this.props.redux_mobileOpen}
+                    onClose={this.props.handleDrawerToggle}
                     classes={{
                         paper: classes.drawerPaper,
                     }}
@@ -93,4 +97,18 @@ class InNav extends Component {
 }
 
 // export default InNav;
-export default withStyles(styles, { withTheme: true })(InNav);
+// export default withStyles(styles, { withTheme: true })(InNav);
+
+const mapDispatchToProps = ({ handleDrawerToggle })
+const mapStateToProps = (state) => {    
+  // const length = Object.keys(state.firebase).length
+  // const current_mobile_open = state.firebase[length-1].mobileOpen
+  return { redux_mobileOpen: state.firebase.mobileOpen }
+}
+
+export default compose(
+  withStyles(styles,{ withTheme: true }),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+))(InNav)
