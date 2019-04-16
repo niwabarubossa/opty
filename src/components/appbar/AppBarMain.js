@@ -83,37 +83,10 @@ class AppBarMain extends Component {
                     <Typography variant="h6" color="inherit" noWrap>
                         <Link to={'/'} style={{textDecoration : 'none',color: 'white' }}>Opty</Link>
                         <Link to={'/management'} style={{textDecoration : 'none',color: 'white',marginLeft: '10px' }}>管理画面へ</Link>
-                        <button onClick={this.togglePopup.bind(this)}>記録する</button>
+                        {/* <button onClick={this.togglePopup.bind(this)}>記録する</button> */}
                     </Typography>
                   </Toolbar>
                 </AppBar>
-                <nav className={classes.drawer}>
-                    <Hidden smUp implementation="css">
-                        <Drawer
-                        container={this.props.container}
-                        variant="temporary"
-                        anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                        open={this.state.mobileOpen}
-                        onClose={this.handleDrawerToggle}
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
-                        >
-                        <AppBarDrawer />
-                        </Drawer>
-                    </Hidden>
-                    <Hidden xsDown implementation="css">
-                        <Drawer
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
-                        variant="permanent"
-                        open
-                        >
-                        <AppBarDrawer />
-                        </Drawer>
-                    </Hidden>
-                </nav>
             </React.Fragment>
         )
     }

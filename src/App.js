@@ -5,16 +5,39 @@ import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import TestComponent from './components/TestComponent';
 import AppBarMain from './components/AppBar/AppBarMain'
+import InNav from './components/AppBar/InNav'
 import ManagementPage from "./components/ManagementPage/ManagementPage";
 
+const drawerWidth = 240;
 const styles = theme => ({
   root: {
     display: 'flex',
   },
+  drawer: {
+    [theme.breakpoints.up('sm')]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
+  },
+  appBar: {
+    marginLeft: drawerWidth,
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
+  },
+  menuButton: {
+    marginRight: 20,
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
+  toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    width: drawerWidth,
+  },
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
-    // paddingTop: '64px'
   },
 });
 
@@ -30,22 +53,19 @@ class App extends Component {
       <BrowserRouter>
             <div className="App" style={{textAlign: 'center'}}>
               <div className={classes.root}>
-                {/* <AppBarMain /> */}
-                  
-                {/* <main className={classes.content} > */}
-                <BrowserRouter>
-                    <main className={classes.content} style={{textAlign: 'center'}}>
-                      <AppBarMain />
-                      <div className={classes.content} style={{textAlign: 'center'}}>
-                        <div style={{flexGrow: 1}}>
-                          <Route exact path="/" component={MainContainer} />
-                          <Route path="/:id" component={TestComponent} />
-                          <Route path="/management" component={ManagementPage} />
-                        </div>  
-                      </div>
-                    </main>
-                </BrowserRouter> 
-                {/* </main> */}
+                    
+                <AppBarMain />
+
+                <nav className={classes.drawer}>
+                  <InNav />
+                </nav>   
+
+                <main className={classes.content} style={{textAlign: 'center'}}>
+                  <Route exact path="/" component={MainContainer} />
+                  <Route path="/:id" component={TestComponent} />
+                  <Route path="/management" component={ManagementPage} />
+                </main>
+
               </div>
             </div>
       </BrowserRouter> 
