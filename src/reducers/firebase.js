@@ -32,6 +32,7 @@ export default ( state = [initialState] , action ) => {
                 if (user) {
                 console.log('ログイン中')
                 console.log(user)
+                console.log(user.uid)
                 } else {
                 console.log('ログアウト中。')
                 }
