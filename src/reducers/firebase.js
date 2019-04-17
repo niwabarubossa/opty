@@ -1,21 +1,19 @@
 import { 
-    FIREBASELOGIN,LOGINSTATUS,FIREBASELOGOUT,SUBMITTWEET,GET_TWEETS
+    FIREBASELOGIN,LOGINSTATUS,FIREBASELOGOUT,SUBMITTWEET,GET_TWEETS,GET_POSTS_REQUEST, GET_POSTS_SUCCESS,HANDLE_DRAWER_TOGGLE,HANDLE_DRAWER_TOGGLE_RESET
  } from '../actions'
- import {
-    GET_POSTS_REQUEST, GET_POSTS_SUCCESS
-  } from '../actions'
 import firebase from 'firebase';
 import { firestore } from '../plugins/firebase'
 import 'firebase/firestore';
 
-// const initialState = { reducer_tweets: [] }
 const initialState = {
     isFetching: false,
-    items: []
+    items: [],
+    mobileOpen: false
   }
 
 export default ( state = [initialState] , action ) => {
-    console.log(action);
+    console.log('acion')
+    console.log(action)
     switch(action.type){
         case FIREBASELOGIN:
             console.log('----------------------firebase login action-----------------------')
@@ -64,14 +62,26 @@ export default ( state = [initialState] , action ) => {
               }
             ]
         case GET_POSTS_SUCCESS:
-            return [
-              ...state,
-              {
+            return Object.assign({}, state, {
+                mobileOpen: state.mobileOpen,
                 isFetching: false,
                 items: action.posts,
                 lastUpdated: action.receivedAt
-              }
-            ]
+            })
+        case HANDLE_DRAWER_TOGGLE:
+            return Object.assign({}, state, {
+                mobileOpen: !state.mobileOpen,
+                isFetching: false,
+                items: action.posts,
+                lastUpdated: action.receivedAt
+            })
+        case HANDLE_DRAWER_TOGGLE_RESET:
+            return Object.assign({}, state, {
+                mobileOpen: false,
+                isFetching: false,
+                items: action.posts,
+                lastUpdated: action.receivedAt
+            })
         default: 
             return state
     }

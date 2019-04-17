@@ -4,41 +4,48 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import TestComponent from './components/TestComponent';
-import AppBarMain from './components/appbar/AppBarMain'
+import AppBarMain from './components/AppBar/AppBarMain'
+import InNav from './components/AppBar/InNav'
+import ManagementPage from "./components/ManagementPage/ManagementPage";
 
+const drawerWidth = 240;
 const styles = theme => ({
   root: {
     display: 'flex',
   },
+  drawer: {
+    [theme.breakpoints.up('sm')]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
+  },
   content: {
     flexGrow: 1,
-    // padding: theme.spacing.unit * 3,
-    paddingTop: '64px'
+    padding: theme.spacing.unit * 3,
   },
 });
 
 class App extends Component {
 
   render() {
+
     const { classes, theme } = this.props;
     return (
       <BrowserRouter>
-        <Switch>
             <div className="App" style={{textAlign: 'center'}}>
-              <div className={classes.root}>
+              <div className={classes.root}>   
                 <AppBarMain />
-                  
-                <main className={classes.content} >
-                <BrowserRouter>
-                  <Switch>
-                    <Route exact path="/" component={MainContainer} />
-                    <Route path="/:id" component={TestComponent} />
-                  </Switch>
-                </BrowserRouter> 
+                <nav className={classes.drawer}>
+                  <InNav />
+                </nav>   
+
+                <main className={classes.content} style={{textAlign: 'center'}}>
+                  <Route exact path="/" component={MainContainer} />
+                  <Route path="/:id" component={TestComponent} />
+                  <Route path="/management" component={ManagementPage} />
                 </main>
               </div>
             </div>
-        </Switch>
       </BrowserRouter> 
     );
   }
