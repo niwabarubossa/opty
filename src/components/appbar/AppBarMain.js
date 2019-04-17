@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { handleDrawerToggle, firebaseLogin, loginStatus } from '../../actions'
+import { handleDrawerToggle, firebaseLogin, loginStatus, loginWithTwitter } from '../../actions'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -51,6 +51,7 @@ class AppBarMain extends Component {
                         <Link to={'/management'} style={{textDecoration : 'none',color: 'white',marginLeft: '10px' }}>管理画面へ</Link>
                         <button onClick={this.props.firebaseLogin}>login</button>
                         <button onClick={this.props.loginStatus}>status</button>
+                        <button onClick={this.props.loginWithTwitter}>twitter_login</button>
                     </Typography>
                   </Toolbar>
                 </AppBar>
@@ -64,7 +65,7 @@ AppBarMain.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-const mapDispatchToProps = ({ handleDrawerToggle, firebaseLogin, loginStatus })
+const mapDispatchToProps = ({ handleDrawerToggle, firebaseLogin, loginStatus, loginWithTwitter })
 const mapStateToProps = (state) => {    
   return { redux_mobileOpen: state.firebase.mobileOpen }
 }

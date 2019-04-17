@@ -1,5 +1,5 @@
 import { 
-    FIREBASELOGIN,LOGINSTATUS,FIREBASELOGOUT,SUBMITTWEET,GET_TWEETS,GET_POSTS_REQUEST, GET_POSTS_SUCCESS,HANDLE_DRAWER_TOGGLE,HANDLE_DRAWER_TOGGLE_RESET
+    FIREBASELOGIN,LOGINSTATUS,FIREBASELOGOUT,SUBMITTWEET,GET_TWEETS,GET_POSTS_REQUEST, GET_POSTS_SUCCESS,HANDLE_DRAWER_TOGGLE,HANDLE_DRAWER_TOGGLE_RESET, LOGIN_WITH_TWITTER, LOGIN_WITH_TWITTER_SUCCESS
  } from '../actions'
 import firebase from 'firebase';
 import { firestore } from '../plugins/firebase'
@@ -8,11 +8,11 @@ import 'firebase/firestore';
 const initialState = {
     isFetching: false,
     items: [],
-    mobileOpen: false
+    mobileOpen: false,
+    user: null
   }
 
 export default ( state = [initialState] , action ) => {
-    console.log('acion')
     console.log(action)
     switch(action.type){
         case FIREBASELOGIN:
@@ -32,7 +32,6 @@ export default ( state = [initialState] , action ) => {
                 if (user) {
                 console.log('ログイン中')
                 console.log(user)
-                debugger;
                 } else {
                 console.log('ログアウト中。')
                 }
@@ -84,6 +83,22 @@ export default ( state = [initialState] , action ) => {
                 items: action.posts,
                 lastUpdated: action.receivedAt
             })
+        case LOGIN_WITH_TWITTER:
+            // var provider = new firebase.auth.TwitterAuthProvider();
+            // const user = null;
+            // firebase.auth().signInWithPopup(provider).then(function(result) {
+            //     // こっちのがreturn よりも遅い
+            //     console.log(result)
+            //   }).catch(function(error) {
+            //   });
+            // return Object.assign({}, state, {
+            //     user: user
+            // })
+            return state
+        case LOGIN_WITH_TWITTER_SUCCESS:
+            return Object.assign({}, state, {
+                user: action.user
+            })     
         default: 
             return state
     }

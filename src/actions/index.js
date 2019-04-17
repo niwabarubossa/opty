@@ -2,6 +2,7 @@ import firebase from 'firebase';
 import { firestore } from '../plugins/firebase'
 import 'firebase/firestore';
 
+
 export const READTWEETS = 'READTWEETS'
 export const readTweets = () => ({
     type: READTWEETS
@@ -68,3 +69,45 @@ export const HANDLE_DRAWER_TOGGLE_RESET = 'HANDLE_DRAWER_TOGGLE_reset'
 export const handleDrawerToggleReset = () => ({
     type: HANDLE_DRAWER_TOGGLE_RESET
 })
+
+export const LOGIN_WITH_TWITTER_SUCCESS = 'LOGIN_WITH_TWITTER_SUCCESS'
+export const loginWithTwitterSuccess = (user) => ({
+    type: LOGIN_WITH_TWITTER_SUCCESS,
+    user: user
+})
+
+export const LOGIN_WITH_TWITTER = 'LOGIN_WITH_TWITTER'
+export const loginWithTwitter = () => async dispatch => {
+    try {
+        const user = await (
+            signInWithProvider()
+        );
+        dispatch({
+          type: LOGIN_WITH_TWITTER_SUCCESS,
+          user: user
+        });
+        return user;
+      } catch(error) {
+        console.log(error);
+      }
+}
+
+async function signInWithProvider() {    
+    try {
+        var provider = new firebase.auth.TwitterAuthProvider();
+        const response = await firebase.auth().signInWithPopup(provider);
+        return response.user;
+    } catch(error) {
+      throw error;
+    }
+}
+
+// function signInWithFirebase() {
+    // var provider = new firebase.auth.TwitterAuthProvider();
+//     const login_result = []
+//     return firebase.auth().signInWithPopup(provider).then(function(result) {
+//                 console('login with twitter in action  user')
+//                 login_result.push(result)
+//             }).catch(function(error) {
+//             });
+//   }
