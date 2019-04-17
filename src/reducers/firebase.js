@@ -31,6 +31,8 @@ export default ( state = [initialState] , action ) => {
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
                 console.log('ログイン中')
+                console.log(user)
+                debugger;
                 } else {
                 console.log('ログアウト中。')
                 }
