@@ -9,56 +9,12 @@ import { handleDrawerToggle } from '../../actions'
 
 const drawerWidth = 240;
 const styles = theme => ({
-  root: {
-    display: 'flex',
-  },
-  drawer: {
-    [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-  },
-  appBar: {
-    marginLeft: drawerWidth,
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
-  },
-  menuButton: {
-    marginRight: 20,
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-  },
-  toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 3,
   },
 });
 
 class InNav extends Component {
-    
-    constructor() {
-        super();
-        this.state = {
-          showPopup: false
-        };
-    }
-    // state = {
-    //     mobileOpen: false,
-    // };
-    // handleDrawerToggle = () => {
-    //     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
-    // };
-    togglePopup() {
-      this.setState({
-        showPopup: !this.state.showPopup
-      });
-    }
 
     render(){
         const { classes, theme } = this.props;
@@ -70,7 +26,6 @@ class InNav extends Component {
                     container={this.props.container}
                     variant="temporary"
                     anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                    // open={this.state.mobileOpen}
                     open={this.props.redux_mobileOpen}
                     onClose={this.props.handleDrawerToggle}
                     classes={{
@@ -96,13 +51,9 @@ class InNav extends Component {
     }
 }
 
-// export default InNav;
-// export default withStyles(styles, { withTheme: true })(InNav);
-
 const mapDispatchToProps = ({ handleDrawerToggle })
 const mapStateToProps = (state) => {    
-  // const length = Object.keys(state.firebase).length
-  // const current_mobile_open = state.firebase[length-1].mobileOpen
+
   return { redux_mobileOpen: state.firebase.mobileOpen }
 }
 

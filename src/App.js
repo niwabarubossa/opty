@@ -19,22 +19,6 @@ const styles = theme => ({
       flexShrink: 0,
     },
   },
-  appBar: {
-    marginLeft: drawerWidth,
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
-  },
-  menuButton: {
-    marginRight: 20,
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-  },
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth,
-  },
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
@@ -44,18 +28,13 @@ const styles = theme => ({
 class App extends Component {
 
   render() {
-    console.log('---------theme--------------')
-    console.log(this.props)
+
     const { classes, theme } = this.props;
-    console.log('---------theme--------------')
-    console.log(this.props)
     return (
       <BrowserRouter>
             <div className="App" style={{textAlign: 'center'}}>
-              <div className={classes.root}>
-                    
+              <div className={classes.root}>   
                 <AppBarMain />
-
                 <nav className={classes.drawer}>
                   <InNav />
                 </nav>   
@@ -65,7 +44,6 @@ class App extends Component {
                   <Route path="/:id" component={TestComponent} />
                   <Route path="/management" component={ManagementPage} />
                 </main>
-
               </div>
             </div>
       </BrowserRouter> 

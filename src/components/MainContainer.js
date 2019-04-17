@@ -26,9 +26,7 @@ class MainContainer extends Component {
 
 const mapDispatchToProps = ({ getPostsRequest, getPostsSuccess, getPosts, handleDrawerToggleReset })
 const mapStateToProps = (state) => {    
-    const length = Object.keys(state.firebase).length
-//   const currentState = state.firebase[length-1].items
-const currentState = state.firebase.items
-  return { state_posts: currentState }
+    const currentState = state.firebase.items
+    return { state_posts: currentState }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer)

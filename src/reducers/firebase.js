@@ -1,14 +1,10 @@
 import { 
-    FIREBASELOGIN,LOGINSTATUS,FIREBASELOGOUT,SUBMITTWEET,GET_TWEETS
+    FIREBASELOGIN,LOGINSTATUS,FIREBASELOGOUT,SUBMITTWEET,GET_TWEETS,GET_POSTS_REQUEST, GET_POSTS_SUCCESS,HANDLE_DRAWER_TOGGLE,HANDLE_DRAWER_TOGGLE_RESET
  } from '../actions'
- import {
-    GET_POSTS_REQUEST, GET_POSTS_SUCCESS,HANDLE_DRAWER_TOGGLE,HANDLE_DRAWER_TOGGLE_RESET
-  } from '../actions'
 import firebase from 'firebase';
 import { firestore } from '../plugins/firebase'
 import 'firebase/firestore';
 
-// const initialState = { reducer_tweets: [] }
 const initialState = {
     isFetching: false,
     items: [],
@@ -66,14 +62,6 @@ export default ( state = [initialState] , action ) => {
               }
             ]
         case GET_POSTS_SUCCESS:
-            // return [
-            //   ...state,
-            //   {
-                // isFetching: false,
-            //     items: action.posts,
-                // lastUpdated: action.receivedAt
-            //   }
-            // ]
             return Object.assign({}, state, {
                 mobileOpen: state.mobileOpen,
                 isFetching: false,
