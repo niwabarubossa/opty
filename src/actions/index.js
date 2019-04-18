@@ -101,13 +101,3 @@ async function signInWithProvider() {
       throw error;
     }
 }
-
-// function signInWithFirebase() {
-    // var provider = new firebase.auth.TwitterAuthProvider();
-//     const login_result = []
-//     return firebase.auth().signInWithPopup(provider).then(function(result) {
-//                 console('login with twitter in action  user')
-//                 login_result.push(result)
-//             }).catch(function(error) {
-//             });
-//   }
