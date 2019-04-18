@@ -86,16 +86,6 @@ export default ( state = [initialState] , action ) => {
                 lastUpdated: action.receivedAt
             })
         case LOGIN_WITH_TWITTER:
-            // var provider = new firebase.auth.TwitterAuthProvider();
-            // const user = null;
-            // firebase.auth().signInWithPopup(provider).then(function(result) {
-            //     // こっちのがreturn よりも遅い
-            //     console.log(result)
-            //   }).catch(function(error) {
-            //   });
-            // return Object.assign({}, state, {
-            //     user: user
-            // })
             return state
         case LOGIN_WITH_TWITTER_SUCCESS:
             return Object.assign({}, state, {
