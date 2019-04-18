@@ -39,9 +39,10 @@ export default ( state = [initialState] , action ) => {
             });
             return state
         case SUBMITTWEET:
+            console.log(state)
             firestore.collection('tweets').add({
-                title: action.new_values.title,
-                body: action.new_values.body,
+                title: action.input.title,
+                body: action.input.body,
                 created_at: new Date(),
               }).then(() => {
               });

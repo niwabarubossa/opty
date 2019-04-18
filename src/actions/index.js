@@ -20,10 +20,10 @@ export const firebaseLogout = () => ({
     type: FIREBASELOGOUT
 })
 export const SUBMITTWEET = 'SUBMITTEXT'
-export const submitTweet = values => async dispatch => {
+export const submitTweet = input => async dispatch => {
     // const values = values
-    const new_values = values
-    dispatch({ type: SUBMITTWEET, new_values })
+    // const new_values = values
+    dispatch({ type: SUBMITTWEET, input: input })
 }
 export const GET_TWEETS = 'GET_TWEETS'
 export const getTweets = () => ({
