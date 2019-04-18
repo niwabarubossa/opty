@@ -82,14 +82,22 @@ export const loginWithTwitter = () => async dispatch => {
         const user = await (
             signInWithProvider()
         );
+        firestore.collection('users').doc(user.uid).set({
+            uid: user.uid,
+            createdAt: new Date()
+        }).then(() => {
+            console.log('success')
+        }).catch((err) => {
+            console.log(err)
+        })
         dispatch({
-          type: LOGIN_WITH_TWITTER_SUCCESS,
-          user: user
+            type: LOGIN_WITH_TWITTER_SUCCESS,
+            user: user
         });
         return user;
-      } catch(error) {
+    } catch(error) {
         console.log(error);
-      }
+    }
 }
 
 async function signInWithProvider() {    
