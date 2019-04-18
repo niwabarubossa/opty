@@ -20,10 +20,10 @@ export const firebaseLogout = () => ({
     type: FIREBASELOGOUT
 })
 export const SUBMITTWEET = 'SUBMITTEXT'
-export const submitTweet = values => async dispatch => {
+export const submitTweet = input => async dispatch => {
     // const values = values
-    const new_values = values
-    dispatch({ type: SUBMITTWEET, new_values })
+    // const new_values = values
+    dispatch({ type: SUBMITTWEET, input: input })
 }
 export const GET_TWEETS = 'GET_TWEETS'
 export const getTweets = () => ({
@@ -82,14 +82,22 @@ export const loginWithTwitter = () => async dispatch => {
         const user = await (
             signInWithProvider()
         );
+        firestore.collection('users').doc(user.uid).set({
+            uid: user.uid,
+            createdAt: new Date()
+        }).then(() => {
+            console.log('success')
+        }).catch((err) => {
+            console.log(err)
+        })
         dispatch({
-          type: LOGIN_WITH_TWITTER_SUCCESS,
-          user: user
+            type: LOGIN_WITH_TWITTER_SUCCESS,
+            user: user
         });
         return user;
-      } catch(error) {
+    } catch(error) {
         console.log(error);
-      }
+    }
 }
 
 async function signInWithProvider() {    
@@ -102,12 +110,26 @@ async function signInWithProvider() {
     }
 }
 
-// function signInWithFirebase() {
-    // var provider = new firebase.auth.TwitterAuthProvider();
-//     const login_result = []
-//     return firebase.auth().signInWithPopup(provider).then(function(result) {
-//                 console('login with twitter in action  user')
-//                 login_result.push(result)
-//             }).catch(function(error) {
-//             });
-//   }
+export const GET_CURRENT_STATE = 'GET_CURRENT_STATE'
+export const getCurrentState = () => {
+    return {
+        type: GET_CURRENT_STATE,
+    }
+}
+export const GET_USER_INFORMATION = 'GET_USER_INFORMATION'
+export const getUserInformation = () => async dispatch => {
+    await firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            dispatch(getUserInformationSuccess(user))
+        } else {
+            console.log('get user information error')
+        }
+    });
+};
+export const GET_USER_INFORMATION_SUCCESS = 'GET_USER_INFORMATION_SUCCESS'
+export const getUserInformationSuccess = (user) => {  
+    return {
+        type: GET_USER_INFORMATION_SUCCESS,
+        user: user
+    }
+}

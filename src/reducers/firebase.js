@@ -1,5 +1,5 @@
 import { 
-    FIREBASELOGIN,LOGINSTATUS,FIREBASELOGOUT,SUBMITTWEET,GET_TWEETS,GET_POSTS_REQUEST, GET_POSTS_SUCCESS,HANDLE_DRAWER_TOGGLE,HANDLE_DRAWER_TOGGLE_RESET, LOGIN_WITH_TWITTER, LOGIN_WITH_TWITTER_SUCCESS
+    FIREBASELOGIN,LOGINSTATUS,FIREBASELOGOUT,SUBMITTWEET,GET_TWEETS,GET_POSTS_REQUEST, GET_POSTS_SUCCESS,HANDLE_DRAWER_TOGGLE,HANDLE_DRAWER_TOGGLE_RESET, LOGIN_WITH_TWITTER, LOGIN_WITH_TWITTER_SUCCESS, GET_CURRENT_STATE,GET_USER_INFORMATION,GET_USER_INFORMATION_SUCCESS
  } from '../actions'
 import firebase from 'firebase';
 import { firestore } from '../plugins/firebase'
@@ -39,9 +39,10 @@ export default ( state = [initialState] , action ) => {
             });
             return state
         case SUBMITTWEET:
+            console.log(state)
             firestore.collection('tweets').add({
-                title: action.new_values.title,
-                body: action.new_values.body,
+                title: action.input.title,
+                body: action.input.body,
                 created_at: new Date(),
               }).then(() => {
               });
@@ -85,21 +86,20 @@ export default ( state = [initialState] , action ) => {
                 lastUpdated: action.receivedAt
             })
         case LOGIN_WITH_TWITTER:
-            // var provider = new firebase.auth.TwitterAuthProvider();
-            // const user = null;
-            // firebase.auth().signInWithPopup(provider).then(function(result) {
-            //     // こっちのがreturn よりも遅い
-            //     console.log(result)
-            //   }).catch(function(error) {
-            //   });
-            // return Object.assign({}, state, {
-            //     user: user
-            // })
             return state
         case LOGIN_WITH_TWITTER_SUCCESS:
             return Object.assign({}, state, {
                 user: action.user
-            })     
+            })
+        case GET_CURRENT_STATE:
+            console.log(state)
+            return state     
+        case GET_USER_INFORMATION:
+            return state
+        case GET_USER_INFORMATION_SUCCESS:
+            return Object.assign({}, state, {
+                user: action.user
+            })
         default: 
             return state
     }

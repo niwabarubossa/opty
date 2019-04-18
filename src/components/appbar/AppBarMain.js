@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { handleDrawerToggle, firebaseLogin, loginStatus, loginWithTwitter } from '../../actions'
+import { handleDrawerToggle, firebaseLogin, loginStatus, loginWithTwitter, getCurrentState, getUserInformation, getUserInformationSuccess } from '../../actions'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -30,7 +30,15 @@ const styles = theme => ({
 
 class AppBarMain extends Component {
 
+    componentWillMount(){
+      this.props.getUserInformation()
+    }
+
     render(){
+        console.log('in papbar this.props')
+        console.log(this.props)
+        console.log('in papbar this.props')
+        console.log(this.props.user)
         const { classes, theme } = this.props;
         return(
             <React.Fragment>
@@ -52,6 +60,7 @@ class AppBarMain extends Component {
                         <button onClick={this.props.firebaseLogin}>login</button>
                         <button onClick={this.props.loginStatus}>status</button>
                         <button onClick={this.props.loginWithTwitter}>twitter_login</button>
+                        <button onClick={this.props.getCurrentState}>get_current_state</button>
                     </Typography>
                   </Toolbar>
                 </AppBar>
@@ -65,9 +74,18 @@ AppBarMain.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-const mapDispatchToProps = ({ handleDrawerToggle, firebaseLogin, loginStatus, loginWithTwitter })
+const mapDispatchToProps = ({ handleDrawerToggle,
+                              firebaseLogin,
+                              loginStatus, 
+                              loginWithTwitter, 
+                              getCurrentState, 
+                              getUserInformation, 
+                              getUserInformationSuccess })
 const mapStateToProps = (state) => {    
-  return { redux_mobileOpen: state.firebase.mobileOpen }
+  return { 
+    redux_mobileOpen: state.firebase.mobileOpen,
+    user: state.firebase.user
+  }
 }
 
 export default compose(
