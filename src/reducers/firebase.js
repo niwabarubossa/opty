@@ -1,5 +1,5 @@
 import { 
-    FIREBASELOGIN,LOGINSTATUS,FIREBASELOGOUT,SUBMITTWEET,GET_TWEETS,GET_POSTS_REQUEST, GET_POSTS_SUCCESS,HANDLE_DRAWER_TOGGLE,HANDLE_DRAWER_TOGGLE_RESET, LOGIN_WITH_TWITTER, LOGIN_WITH_TWITTER_SUCCESS
+    FIREBASELOGIN,LOGINSTATUS,FIREBASELOGOUT,SUBMITTWEET,GET_TWEETS,GET_POSTS_REQUEST, GET_POSTS_SUCCESS,HANDLE_DRAWER_TOGGLE,HANDLE_DRAWER_TOGGLE_RESET, LOGIN_WITH_TWITTER, LOGIN_WITH_TWITTER_SUCCESS, GET_CURRENT_STATE,GET_USER_INFORMATION,GET_USER_INFORMATION_SUCCESS
  } from '../actions'
 import firebase from 'firebase';
 import { firestore } from '../plugins/firebase'
@@ -100,7 +100,16 @@ export default ( state = [initialState] , action ) => {
         case LOGIN_WITH_TWITTER_SUCCESS:
             return Object.assign({}, state, {
                 user: action.user
-            })     
+            })
+        case GET_CURRENT_STATE:
+            console.log(state)
+            return state     
+        case GET_USER_INFORMATION:
+            return state
+        case GET_USER_INFORMATION_SUCCESS:
+            return Object.assign({}, state, {
+                user: action.user
+            })
         default: 
             return state
     }

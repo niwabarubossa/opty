@@ -109,3 +109,27 @@ async function signInWithProvider() {
       throw error;
     }
 }
+
+export const GET_CURRENT_STATE = 'GET_CURRENT_STATE'
+export const getCurrentState = () => {
+    return {
+        type: GET_CURRENT_STATE,
+    }
+}
+export const GET_USER_INFORMATION = 'GET_USER_INFORMATION'
+export const getUserInformation = () => async dispatch => {
+    await firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            dispatch(getUserInformationSuccess(user))
+        } else {
+            console.log('get user information error')
+        }
+    });
+};
+export const GET_USER_INFORMATION_SUCCESS = 'GET_USER_INFORMATION_SUCCESS'
+export const getUserInformationSuccess = (user) => {  
+    return {
+        type: GET_USER_INFORMATION_SUCCESS,
+        user: user
+    }
+}
