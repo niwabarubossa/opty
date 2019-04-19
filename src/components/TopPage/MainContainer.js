@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import '../assets/MainContainer.css'
+import '../../assets/MainContainer.css'
 import TweetsContainer from './TweetsContainer'
 import TweetsDisplaysContainer from './TweetsDisplaysContainer'
-import GetPostListContainer from './containers/GetPostListContainer'
+import GetPostListContainer from '../containers/GetPostListContainer'
 import { connect } from 'react-redux'
-import { getPostsRequest, getPostsSuccess, getPosts, handleDrawerToggleReset } from '../actions'
+import { getPostsRequest, getPostsSuccess, getPosts, handleDrawerToggleReset } from '../../actions'
 
 class MainContainer extends Component {
     componentWillMount(){

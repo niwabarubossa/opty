@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import { connect } from 'react-redux'
-import { submitTweet } from '../actions'
+import { submitTweet } from '../../actions'
 import Button from '@material-ui/core/Button';
 
 class ContentsContainer extends Component {

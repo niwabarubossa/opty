@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import MainContainer from './components/MainContainer'
+import MainContainer from './components/TopPage/MainContainer'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import TestComponent from './components/TestComponent';
+import TestComponent from './components/TopPage/TestComponent';
 import AppBarMain from './components/AppBar/AppBarMain'
 import InNav from './components/AppBar/InNav'
 import ManagementPage from "./components/ManagementPage/ManagementPage";
