@@ -98,7 +98,7 @@ export default ( state = [initialState] , action ) => {
             return state
         case GET_USER_INFORMATION_SUCCESS:
             return Object.assign({}, state, {
-                user: action.user
+                current_user: action.current_user
             })
         default: 
             return state

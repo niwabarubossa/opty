@@ -21,8 +21,6 @@ export const firebaseLogout = () => ({
 })
 export const SUBMITTWEET = 'SUBMITTEXT'
 export const submitTweet = input => async dispatch => {
-    // const values = values
-    // const new_values = values
     dispatch({ type: SUBMITTWEET, input: input })
 }
 export const GET_TWEETS = 'GET_TWEETS'
@@ -127,9 +125,9 @@ export const getUserInformation = () => async dispatch => {
     });
 };
 export const GET_USER_INFORMATION_SUCCESS = 'GET_USER_INFORMATION_SUCCESS'
-export const getUserInformationSuccess = (user) => {  
+export const getUserInformationSuccess = (current_user) => {  
     return {
         type: GET_USER_INFORMATION_SUCCESS,
-        user: user
+        current_user: current_user
     }
 }
