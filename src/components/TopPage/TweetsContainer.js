@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TweetContainer from './TweetContainer'
-
-import '../assets/TweetContainer.css'
+import '../../assets/TweetContainer.css'
 
 class TweetsContainer extends Component {
     render(){

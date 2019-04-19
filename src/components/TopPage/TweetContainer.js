@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../assets/TweetContainer.css'
+import '../../assets/TweetContainer.css'
 import ContentsContainer from './ContentsContainer'
 
 class TweetContainer extends Component {

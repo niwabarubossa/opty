@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MainContainer from './components/MainContainer'
+import MainContainer from './components/TopPage/MainContainer'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
