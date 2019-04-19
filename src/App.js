@@ -7,6 +7,7 @@ import TestComponent from './components/TestComponent';
 import AppBarMain from './components/AppBar/AppBarMain'
 import InNav from './components/AppBar/InNav'
 import ManagementPage from "./components/ManagementPage/ManagementPage";
+import UserPage from './components/UserPage/UserPage'
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -43,6 +44,7 @@ class App extends Component {
                   <Route exact path="/" component={MainContainer} />
                   <Route path="/:id" component={TestComponent} />
                   <Route path="/management" component={ManagementPage} />
+                  <Route path="/user/:id" component={UserPage} />
                 </main>
               </div>
             </div>
