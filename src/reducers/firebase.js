@@ -39,10 +39,11 @@ export default ( state = [initialState] , action ) => {
             });
             return state
         case SUBMITTWEET:
-            console.log(state)
             firestore.collection('tweets').add({
                 title: action.input.title,
                 body: action.input.body,
+                author_id: state.current_user.uid,
+                tweet_id: Math.floor(Math.random()*1000000),
                 created_at: new Date(),
               }).then(() => {
               });
