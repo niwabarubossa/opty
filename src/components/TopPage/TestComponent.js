@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import TestComponentChild from './TestComponentChild'
-import { getPostsRequest, getPostsSuccess, getPosts ,getSelectedPosts } from '../actions'
+import { getPostsRequest, getPostsSuccess, getPosts ,getSelectedPosts } from '../../actions'
 import { connect } from 'react-redux'
-import classes from '../assets/TestComponent.css'
+import classes from '../../assets/TestComponent.css'
 
 class TestComponent extends Component {
     
