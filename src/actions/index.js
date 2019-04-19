@@ -43,7 +43,8 @@ export const getPostsSuccess = (json) => {
 }
 export const getPosts = () => async dispatch => {
     const temperature = []
-    await firestore.collection("projects").get().then(function(querySnapshot) {
+    // await firestore.collection("projects").get().then(function(querySnapshot) {
+    await firestore.collection("tweets").get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             temperature.push(doc.data())
         });
@@ -52,7 +53,7 @@ export const getPosts = () => async dispatch => {
 }
 export const getSelectedPosts = (tweet_id) => async dispatch => {
     const temperature = []
-    await firestore.collection("projects").where("tweet_id","==",tweet_id).get().then(function(querySnapshot) {
+    await firestore.collection("tweets").where("tweet_id","==",tweet_id).get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             temperature.push(doc.data())
         });
