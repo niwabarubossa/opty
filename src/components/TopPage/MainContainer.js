@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import '../../assets/MainContainer.css'
-import TweetsContainer from './TweetsContainer'
-import TweetsDisplaysContainer from './TweetsDisplaysContainer'
-import GetPostListContainer from '../containers/GetPostListContainer'
 import ContentCardContainer from './ContentCardContainer'
 import { connect } from 'react-redux'
 import { getPostsRequest, getPostsSuccess, getPosts, handleDrawerToggleReset } from '../../actions'
+import ContentsContainer from './ContentsContainer'
 
 class MainContainer extends Component {
     componentWillMount(){
@@ -17,10 +15,8 @@ class MainContainer extends Component {
     render(){
         return(
             <div className="mainContainer">
-                <TweetsContainer />
-                <TweetsDisplaysContainer />
+                <ContentsContainer />
                 <ContentCardContainer />
-
             </div>
         )
     }

@@ -16,7 +16,7 @@ class ContentCardContainer extends Component {
                 { this.props.state_posts && this.props.state_posts.map(project => {
                     return (
                     // <Link to={`/${project.tweet_id}`}>
-                        <div key={project.tweet_id} style={{backgroundColor: 'orange'}}>
+                        <div key={project.tweet_id}>
                         {/* uwaaa<h1 style={{color: 'black'}}>{project.title}</h1>
                         body<h1 style={{color: 'black'}}>{project.body}</h1>
                         tweet_id<h1 style={{color: 'black'}}>{project.tweet_id}</h1>
