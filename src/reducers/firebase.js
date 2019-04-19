@@ -105,7 +105,7 @@ export default ( state = [initialState] , action ) => {
             return state
         case GET_DISPLAY_USER_INFORMATION_SUCCESS:
             return Object.assign({}, state, {
-                display_user: action.display_user
+                display_user_uid: action.display_user_uid
             })
         default: 
             return state

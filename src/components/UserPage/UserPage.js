@@ -20,7 +20,7 @@ class UserPage extends Component {
 }
 const mapStateToProps = (state) => {    
   return { 
-    display_user: state.firebase.display_user
+    display_user_uid: state.firebase.display_user_uid
   }
 }
 

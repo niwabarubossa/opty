@@ -142,9 +142,9 @@ export const getDisplayUserInformation = (uid) => async dispatch => {
     });
 };
 export const GET_DISPLAY_USER_INFORMATION_SUCCESS = 'GET_DISPLAY_USER_INFORMATION_SUCCESS'
-export const getDisplayUserInformationSuccess = (display_user) => {  
+export const getDisplayUserInformationSuccess = (display_user_uid) => {  
     return {
         type: GET_DISPLAY_USER_INFORMATION_SUCCESS,
-        display_user: display_user
+        display_user_uid: display_user_uid
     }
 }
