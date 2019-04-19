@@ -35,10 +35,6 @@ class AppBarMain extends Component {
     }
 
     render(){
-        console.log('in papbar this.props')
-        console.log(this.props)
-        console.log('in papbar this.props currentuser')
-        console.log(this.props.current_user)
         const { classes, theme } = this.props;
         return(
             <React.Fragment>

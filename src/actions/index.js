@@ -2,7 +2,6 @@ import firebase from 'firebase';
 import { firestore } from '../plugins/firebase'
 import 'firebase/firestore';
 
-
 export const READTWEETS = 'READTWEETS'
 export const readTweets = () => ({
     type: READTWEETS
@@ -130,5 +129,22 @@ export const getUserInformationSuccess = (current_user) => {
     return {
         type: GET_USER_INFORMATION_SUCCESS,
         current_user: current_user
+    }
+}
+
+export const GET_DISPLAY_USER_INFORMATION = 'GET_DISPLAY_USER_INFORMATION'
+export const getDisplayUserInformation = (uid) => async dispatch => {
+    await firestore.collection("users").where("uid","==",uid).get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            console.log(doc.data())
+            dispatch(getDisplayUserInformationSuccess(doc.data().uid))
+        });
+    });
+};
+export const GET_DISPLAY_USER_INFORMATION_SUCCESS = 'GET_DISPLAY_USER_INFORMATION_SUCCESS'
+export const getDisplayUserInformationSuccess = (display_user) => {  
+    return {
+        type: GET_DISPLAY_USER_INFORMATION_SUCCESS,
+        display_user: display_user
     }
 }
