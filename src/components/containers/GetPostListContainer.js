@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import React from 'react';
-
+import ContentCard from '../TopPage/ContentCard'
 const GetPostListContainer = ({props}) => {
   return (
     <div>
@@ -8,12 +8,15 @@ const GetPostListContainer = ({props}) => {
         return (
           // <Link to={`/${project.tweet_id}`}>
             <div key={project.tweet_id} style={{backgroundColor: 'orange'}}>
-              title<h1 style={{color: 'black'}}>{project.title}</h1>
+              {/* uwaaa<h1 style={{color: 'black'}}>{project.title}</h1>
               body<h1 style={{color: 'black'}}>{project.body}</h1>
               tweet_id<h1 style={{color: 'black'}}>{project.tweet_id}</h1>
               <Link to={`user/${project.author_id}`}>
                 author_id<h1 style={{color: 'black'}}>{project.author_id}</h1>
               </Link>
+               */}
+               <ContentCard props={project} />
+
             </div>
         )
       })}  
