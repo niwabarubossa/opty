@@ -3,6 +3,7 @@ import Card from '@material-ui/core/Card';
 import { CardContent } from '@material-ui/core';
 import classes from '../../assets/ContentCard.css';
 import classnames from 'classnames';
+import { Link } from 'react-router-dom'
 
 import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
@@ -21,23 +22,28 @@ const ContentCard = ({props}) => {
   return (
           <div className={classes.cardContainer} >
             <Card>
-              <CardHeader
-                avatar={
-                  <Avatar aria-label="Recipe" className={classes.avatar}>
-                  </Avatar>
-                }
-                action={
-                  <IconButton>
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="User Name"
-                subheader="September 14, 2016"
-                className={classes.cardHeader}
-              />
+
+                <Link to={`user/${props.author_id}`}>
+                    <CardHeader
+                        avatar={
+                        <Avatar aria-label="Recipe" className={classes.avatar}>
+                        </Avatar>
+                        }
+                        action={
+                        <IconButton>
+                            <MoreVertIcon />
+                        </IconButton>
+                        }
+                        title="User Name"
+                        subheader="September 14, 2016"
+                        className={classes.cardHeader}
+                    />
+                </Link>
 
               <CardContent>
-                <span style={{color: 'black'}}>{props.title}</span>
+                title<span style={{color: 'black'}}>{props.title}</span>
+                body<span style={{color: 'black'}}>{props.body}</span>
+                author_id<span style={{color: 'black'}}>{props.author_id}</span>
               </CardContent>
 
               <CardActions className={classes.actions} disableActionSpacing>
