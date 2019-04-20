@@ -15,7 +15,7 @@ class MainContainer extends Component {
     render(){
         return(
             <div className="mainContainer">
-                <ContentsContainer />
+                {/* <ContentsContainer /> */}
                 <ContentCardContainer />
             </div>
         )
