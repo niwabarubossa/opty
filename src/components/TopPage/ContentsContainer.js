@@ -39,18 +39,12 @@ class ContentsContainer extends Component {
         const { handleSubmit, pristine, submitting, invalid } = this.props
         const style = { margin: 12 }
         return(
-            <div className="contentsContainer" style={{marginTop: '60px'}}>
+            <div className="contentsContainer">
                 <form onSubmit={handleSubmit(this.onSubmit)}>
                     <div><Field label="Title" name="title" type="text" component={this.renderField} /></div>
                     <div><Field label="Body" name="body" type="text" component={this.renderField} /></div>
-                    <div><Field label="Body" name="sample" type="text" component={this.renderField} /></div>
                     <RaisedButton label="Submit" type="submit" style={style} />
                 </form>
-                {/* <form onSubmit={this.firebase_submit}>
-                    <textarea id="content" onChange={this.handleChange}/>
-                    <button>create</button>
-                    <Button variant="contained" color="primary">Primary</Button>
-                </form> */}
             </div>
         )
     }
