@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "qiita-4f9c2"
+    "default": "qiita-4f9c2",
+    "latest_opty": "opty-firebase-0318"
   }
 }

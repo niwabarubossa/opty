@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { getPostsRequest, getPostsSuccess, getPosts, handleDrawerToggleReset } from '../../actions'
 import RightContainer from './RightContainer'
 import {Grid} from "@material-ui/core"
+import ContentsHeader from './ContentsHeader'
 
 class MainContainer extends Component {
     componentWillMount(){
@@ -19,11 +20,14 @@ class MainContainer extends Component {
                 <Grid container spacing={16} >
                     <Grid item xs={12} md={8}>
                         <div className={classes.contentCardContainer}>
+                            <ContentsHeader headerName={'タイムライン'} />
                             <ContentCardContainer />
                         </div>
                     </Grid>
                     <Grid item xs={12} md={4}>
+                        <ContentsHeader headerName={'記録'} />
                         <RightContainer />
+                        <ContentsHeader headerName={'トレンド'} />
                     </Grid>
                 </Grid>
             </div>

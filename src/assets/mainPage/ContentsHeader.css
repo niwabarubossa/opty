@@ -1,0 +1,10 @@
+.contentsHeader{
+    background-color: white;
+    border-top:solid 3px skyblue;
+    height:45px;
+    width:100%;
+    margin-bottom: 10px;
+    line-height: 45px;
+    font-weight: bold;
+    text-align: center;
+}
