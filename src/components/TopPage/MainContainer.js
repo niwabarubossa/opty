@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import '../../assets/MainContainer.css'
+import classes from  '../../assets/mainPage/MainContainer.css'
 import ContentCardContainer from './ContentCardContainer'
 import { connect } from 'react-redux'
 import { getPostsRequest, getPostsSuccess, getPosts, handleDrawerToggleReset } from '../../actions'
-import ContentsContainer from './ContentsContainer'
+import RightContainer from './RightContainer'
+import {Grid} from "@material-ui/core"
 
 class MainContainer extends Component {
     componentWillMount(){
@@ -15,8 +16,16 @@ class MainContainer extends Component {
     render(){
         return(
             <div className="mainContainer">
-                {/* <ContentsContainer /> */}
-                <ContentCardContainer />
+                <Grid container spacing={16} >
+                    <Grid item xs={12} md={8}>
+                        <div className={classes.contentCardContainer}>
+                            <ContentCardContainer />
+                        </div>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        <RightContainer />
+                    </Grid>
+                </Grid>
             </div>
         )
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from '@material-ui/core/Card';
 import { CardContent } from '@material-ui/core';
-import classes from '../../assets/ContentCard.css';
+import classes from '../../assets/mainPage/ContentCard.css';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom'
 
@@ -22,7 +22,6 @@ const ContentCard = ({props}) => {
   return (
           <div className={classes.cardContainer} >
             <Card>
-
                 <Link to={`user/${props.author_id}`}>
                     <CardHeader
                         avatar={
@@ -39,28 +38,22 @@ const ContentCard = ({props}) => {
                         className={classes.cardHeader}
                     />
                 </Link>
-
               <CardContent>
                 title<span style={{color: 'black'}}>{props.title}</span>
                 body<span style={{color: 'black'}}>{props.body}</span>
                 author_id<span style={{color: 'black'}}>{props.author_id}</span>
               </CardContent>
-
               <CardActions className={classes.actions} disableActionSpacing>
                 <IconButton aria-label="Add to favorites">
                   <FavoriteIcon />
                 </IconButton>
-
                 <IconButton aria-label="Autorenew">
                   <Autorenew />
                 </IconButton>
-
                 <IconButton aria-label="Comment">
                   <Comment />
                 </IconButton>
-
               </CardActions>
-
             </Card>
           </div>
   )

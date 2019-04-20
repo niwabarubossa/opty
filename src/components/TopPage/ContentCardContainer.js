@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ContentCard from './ContentCard'
 import { getPostsRequest, getPostsSuccess, getPosts, handleDrawerToggleReset } from '../../actions'
 import { connect } from 'react-redux'
+import classes from '../../assets/mainPage/ContentCardContainer.css'
 
 class ContentCardContainer extends Component {
     componentWillMount(){
@@ -12,24 +13,14 @@ class ContentCardContainer extends Component {
     }
     render(){
         return(
-            <div>
+            <div className={classes.ContentCardContainer}>
                 { this.props.state_posts && this.props.state_posts.map(project => {
                     return (
-                    // <Link to={`/${project.tweet_id}`}>
                         <div key={project.tweet_id}>
-                        {/* uwaaa<h1 style={{color: 'black'}}>{project.title}</h1>
-                        body<h1 style={{color: 'black'}}>{project.body}</h1>
-                        tweet_id<h1 style={{color: 'black'}}>{project.tweet_id}</h1>
-                        <Link to={`user/${project.author_id}`}>
-                            author_id<h1 style={{color: 'black'}}>{project.author_id}</h1>
-                        </Link>
-                        */}
-                        <ContentCard props={project} />
-
+                            <ContentCard props={project} />
                         </div>
                     )
                 })}  
-
             </div>
         )
     }
