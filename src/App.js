@@ -22,7 +22,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing.unit * 1,
   },
 });
 
@@ -33,7 +33,7 @@ class App extends Component {
     const { classes, theme } = this.props;
     return (
       <BrowserRouter>
-            <div className="App" style={{textAlign: 'center'}}>
+            <div className="App" style={{textAlign: 'center',marginTop: '64px'}}>
               <div className={classes.root}>   
                 <AppBarMain />
                 <nav className={classes.drawer}>
