@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import TestComponent from './components/TopPage/TestComponent';
 import AppBarMain from './components/AppBar/AppBarMain'
 import InNav from './components/AppBar/InNav'
-import ManagementPage from "./components/ManagementPage/ManagementPage";
+import ManagementPageMainContainer from "./components/ManagementPage/MainContainer";
 import UserPage from './components/UserPage/UserPage'
 
 const drawerWidth = 240;
@@ -43,7 +43,7 @@ class App extends Component {
                 <main className={classes.content} style={{textAlign: 'center'}}>
                   <Route exact path="/" component={MainContainer} />
                   <Route path="/:id" component={TestComponent} />
-                  <Route path="/management" component={ManagementPage} />
+                  <Route path="/management" component={ManagementPageMainContainer} />
                   <Route path="/user/:id" component={UserPage} />
                 </main>
               </div>
